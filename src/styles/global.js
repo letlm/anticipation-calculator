@@ -25,7 +25,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background: var(--grey-0);
+        background: var(--white-2);
         font-family: 'Source Sans Pro', sans-serif;
         width: 100%;
         height: 100%;

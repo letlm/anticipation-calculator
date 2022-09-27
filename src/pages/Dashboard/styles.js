@@ -10,7 +10,8 @@ export const Container = styled.main`
   .container-center {
     width: 750px;
     height: 400px;
-    border: 1px solid red;
+    border: 1px solid var(--grey-1);
+    border-radius: 4px;
     display: flex;
   }
 `;

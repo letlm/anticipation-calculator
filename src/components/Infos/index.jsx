@@ -1,33 +1,43 @@
 import { useContext } from "react";
 import { ApiContext } from "../../provider/ApiProvider";
+import { Container } from "./styles";
 
 function Infos() {
   const { calculation } = useContext(ApiContext);
 
-  console.log(calculation);
-
   return (
-    <div>
-      <span>VOCÊ RECEBERÁ</span>
-      <div>
-        <span>
-          Amanhã:{" "}
-          {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[1]}`}
-        </span>
-        <span>
-          Em 15 dias:{" "}
-          {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[15]}`}
-        </span>
-        <span>
-          Em 30dias:{" "}
-          {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[30]}`}
-        </span>
-        <span>
-          Em 90dias:{" "}
-          {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[90]}`}
-        </span>
+    <Container>
+      <div className="context">
+        <span className="result">VOCÊ RECEBERÁ:</span>
+        <span className="line"></span>
+        <div>
+          <div className="box">
+            <span className="days">Amanhã:</span>
+            <span className="total">
+              {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[1]}`}
+            </span>
+          </div>
+          <div className="box">
+            <span className="days">Em 15 dias:</span>
+            <span className="total">
+              {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[1]}`}
+            </span>
+          </div>
+          <div className="box">
+            <span className="days">Em 30 dias:</span>
+            <span className="total">
+              {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[1]}`}
+            </span>
+          </div>
+          <div className="box">
+            <span className="days">Em 90 dias:</span>
+            <span className="total">
+              {calculation.length === 0 ? "R$ 0,00" : `R$ ${calculation[1]}`}
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }
 
