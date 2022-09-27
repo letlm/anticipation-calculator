@@ -12,12 +12,19 @@ function ApiProvider({ children }) {
       .post("", data)
       .then((response) => {
         console.log(response.data);
-        setCalculation(...calculation, response.data);
+        setCalculation(response.data);
       })
-      .catch(() => {
-        toast("❌ Erro ao fazer a solicitação de cálculo!", {
-          className: "toastify-color-progress-error",
-        });
+      .catch((err) => {
+        if (err.message === "Request failed with status code 408") {
+          toast("message: Timeout ❌", {
+            className: "toastify-color-progress-error",
+          });
+        }
+        if (err.message === "Request failed with status code 500") {
+          toast("message: Internal Server Error ❌", {
+            className: "toastify-color-progress-error",
+          });
+        }
       });
   };
 
