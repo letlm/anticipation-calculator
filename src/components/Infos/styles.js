@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  width: 300px;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 800px) {
+    width: 300px;
+    height: 100%;
+
+    .context {
+      .line {
+        width: 100%;
+      }
+    }
+  }
 
   .context {
     width: 70%;
@@ -27,7 +38,7 @@ export const Container = styled.section`
 
     .line {
       height: 1px;
-      width: 100%;
+      width: 180px;
       border-bottom: 2px solid var(--blue-1);
       opacity: 0.3;
     }
