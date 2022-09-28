@@ -7,7 +7,15 @@ import { Container } from "./styles";
 import Input from "../Input";
 
 function FormCalculator() {
-  const { insertCalculation } = useContext(ApiContext);
+  const {
+    insertCalculation,
+    delay,
+    errorOff,
+    timeout,
+    testErrorOff,
+    testTimeout,
+    testDelay,
+  } = useContext(ApiContext);
 
   const schema = yup.object().shape({
     amount: yup
@@ -37,7 +45,22 @@ function FormCalculator() {
   });
 
   const onSubmitCalculation = (object) => {
-    if ("amount" !== "" && "installments" !== "" && "mdr" !== "") {
+    if (delay) {
+      testDelay(object);
+      setValue("amount", "");
+      setValue("installments", "");
+      setValue("mdr", "");
+    } else if (errorOff) {
+      testErrorOff(object);
+      setValue("amount", "");
+      setValue("installments", "");
+      setValue("mdr", "");
+    } else if (timeout) {
+      testTimeout(object);
+      setValue("amount", "");
+      setValue("installments", "");
+      setValue("mdr", "");
+    } else {
       insertCalculation(object);
       setValue("amount", "");
       setValue("installments", "");
