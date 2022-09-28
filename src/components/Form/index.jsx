@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useContext } from "react";
 import { ApiContext } from "../../provider/ApiProvider";
 import { Container } from "./styles";
+import Input from "../Input";
 
 function FormCalculator() {
   const { insertCalculation } = useContext(ApiContext);
@@ -49,34 +50,29 @@ function FormCalculator() {
       <form onChange={handleSubmit(onSubmitCalculation)}>
         <span>Simule sua Antecipação</span>
         <div className="content">
-          <div>
-            <label>Informe o valor da venda *</label>
-            <input
-              type="number"
-              placeholder="R$ 3000,00"
-              {...register("amount")}
-            />
-            {errors.amount && (
-              <span className="error">{errors.amount.message}</span>
-            )}
-          </div>
-          <div>
-            <label>Em quantas parcelas *</label>
-            <input
-              type="number"
-              placeholder="4"
-              {...register("installments")}
-            />
-            <span className="max">Máximo de 12 parcelas</span>
-            {errors.installments && (
-              <span className="error">{errors.installments.message}</span>
-            )}
-          </div>
-          <div>
-            <label>Informe o percentual de MDR *</label>
-            <input type="number" placeholder="6%" {...register("mdr")} />
-            {errors.mdr && <span className="error">{errors.mdr.message}</span>}
-          </div>
+          <Input
+            label="Informe o valor da venda *"
+            placeholder="Exemplo: R$ 3000,00"
+            register={register}
+            name="amount"
+            error={errors.amount?.message}
+          />
+          <Input
+            label="Em quantas parcelas *"
+            placeholder="Exemplo: 4"
+            register={register}
+            name="installments"
+            error={errors.installments?.message}
+            span="Máximo de 12 parcelas"
+          />
+
+          <Input
+            label="Informe o percentual de MDR *"
+            placeholder="Exemplo: 6%"
+            register={register}
+            name="mdr"
+            error={errors.mdr?.message}
+          />
         </div>
       </form>
     </Container>

@@ -26,33 +26,6 @@ export const Container = styled.section`
       flex-direction: column;
       height: 280px;
       justify-content: space-around;
-
-      input {
-        height: 37px;
-        width: 100%;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid var(--grey-2);
-      }
-
-      label {
-        color: var(--grey-3);
-        font-family: "SourceSansPro", sans-serif;
-        font-size: 14px;
-        text-align: left;
-      }
-
-      .max {
-        font-size: 14px;
-        color: var(--white-3);
-        font-weight: 700;
-      }
-
-      .error {
-        font-size: 14px;
-        color: var(--red);
-        font-weight: 700;
-      }
     }
   }
 `;
